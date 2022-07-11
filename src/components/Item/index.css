@@ -1,0 +1,16 @@
+.item-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    font-size: 16px;
+    line-height: 40px;
+    border: 1px solid #fff;
+}
+.item-box button{
+    padding: 0 20px;
+    height: 32px;
+    margin-right: 10px;
+    background: #f44336;
+    color: #fff;
+}
