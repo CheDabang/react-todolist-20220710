@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import "./index.css";
 
 export default class item extends Component {
-  static propTypes = {
-    todos: PropTypes.array.isRequired,
-  };
   state = { mouse: false };
   handleMouse = (flag) => {
     return () => {
@@ -14,9 +10,12 @@ export default class item extends Component {
   };
   handleCheck = (id) => {
     return (e) => {
-      console.log(e);
       this.props.updateTodo(id, e.target.checked);
     };
+  };
+  handleDelete = (id) => {
+    if (!window.confirm("请确认删除代办事项！")) return;
+    this.props.deleteTodo(id);
   };
   render() {
     const { id, name, done } = this.props;
@@ -36,7 +35,13 @@ export default class item extends Component {
           />
           <span>{name}</span>
         </label>
-        <button style={{ display: mouse ? "block" : "none" }}>删除</button>
+        <button
+          style={{ display: mouse ? "block" : "none" }}
+          className="danger"
+          onClick={() => this.handleDelete(id)}
+        >
+          删除
+        </button>
       </div>
     );
   }

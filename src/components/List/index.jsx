@@ -8,14 +8,18 @@ export default class List extends Component {
     updateTodo: PropTypes.func.isRequired,
   };
   render() {
-    const { todos, updateTodo } = this.props;
+    const { todos, updateTodo, deleteTodo } = this.props;
     return (
       <div>
         <ul>
           {todos.map((todo) => {
             return (
               <li key={todo.id}>
-                <Item {...todo} updateTodo={updateTodo} />
+                <Item
+                  {...todo}
+                  updateTodo={updateTodo}
+                  deleteTodo={deleteTodo}
+                />
               </li>
             );
           })}

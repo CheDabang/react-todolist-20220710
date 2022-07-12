@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./App.css";
 
 import Head from "./components/Head";
 import List from "./components/List";
@@ -28,11 +27,22 @@ export class App extends Component {
     });
     this.setState({ todos: newTodos });
   };
+  deleteTodo = (id) => {
+    const { todos } = this.state;
+    const newTodos = todos.filter((todo) => {
+      return todo.id !== id;
+    });
+    this.setState({ todos: newTodos });
+  };
   render() {
     return (
       <div className="App">
         <Head addTodo={this.addTodo} />
-        <List todos={this.state.todos} updateTodo={this.updateTodo} />
+        <List
+          todos={this.state.todos}
+          updateTodo={this.updateTodo}
+          deleteTodo={this.deleteTodo}
+        />
         <Bottom />
       </div>
     );
