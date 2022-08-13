@@ -22,3 +22,26 @@ button{
 button.danger{
   background: #f44336;
 }
+
+.app-container .nav{
+  padding: 20px;
+  display: flex;
+}
+.app-container .nav a{
+  margin-right: 10px;
+   padding: 0 20px;
+   line-height: 30px;
+   border: 1px solid #ccc;
+   border-radius: 3px;
+   font-size: 14px;
+   color: #000;
+   text-decoration: none;
+}
+.app-container .nav a.active{
+  background: #2b78fd;
+  color: #fff;
+}
+
+.app-container .content{
+  padding: 20px;
+}

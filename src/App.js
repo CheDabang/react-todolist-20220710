@@ -1,52 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
+import { NavLink, Routes, Route } from "react-router-dom";
+import Base from "./page/Base";
+import Func from "./page/Func";
 
-import Head from "./components/Head";
-import List from "./components/List";
-import Bottom from "./components/bottom";
-
-export class App extends Component {
-  state = {
-    todos: [
-      { id: "001", name: "吃饭", done: false },
-      { id: "002", name: "睡觉", done: true },
-      { id: "003", name: "打豆豆", done: false },
-    ],
-  };
-
-  addTodo = (todo) => {
-    const { todos } = this.state;
-    const newTodos = [todo, ...todos];
-    this.setState({ todos: newTodos });
-  };
-  updateTodo = (id, done) => {
-    const { todos } = this.state;
-    const newTodos = todos.map((todo) => {
-      if (todo.id === id) {
-        return { ...todo, done };
-      } else return todo;
-    });
-    this.setState({ todos: newTodos });
-  };
-  deleteTodo = (id) => {
-    const { todos } = this.state;
-    const newTodos = todos.filter((todo) => {
-      return todo.id !== id;
-    });
-    this.setState({ todos: newTodos });
-  };
-  render() {
-    return (
-      <div className="App">
-        <Head addTodo={this.addTodo} />
-        <List
-          todos={this.state.todos}
-          updateTodo={this.updateTodo}
-          deleteTodo={this.deleteTodo}
-        />
-        <Bottom />
+export default function App() {
+  return (
+    <div className="app-container">
+      <div className="nav">
+        <NavLink to="/base">基础类写法</NavLink>
+        <NavLink to="/func">基础函数式写法</NavLink>
       </div>
-    );
-  }
+      <div className="content">
+        <Routes>
+          <Route path="base" element={<Base />} />
+          <Route path="func" element={<Func />} />
+        </Routes>
+      </div>
+    </div>
+  );
 }
-
-export default App;

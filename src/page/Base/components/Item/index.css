@@ -1,0 +1,9 @@
+.item-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    font-size: 16px;
+    line-height: 40px;
+    border: 1px solid #fff;
+}
