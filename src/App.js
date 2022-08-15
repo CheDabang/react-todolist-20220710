@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Routes, Route } from "react-router-dom";
+import { NavLink, Routes, Route, Navigate } from "react-router-dom";
 import Base from "./page/Base";
 import Func from "./page/Func";
 
@@ -14,6 +14,7 @@ export default function App() {
         <Routes>
           <Route path="base" element={<Base />} />
           <Route path="func" element={<Func />} />
+          <Route path="*" element={<Navigate to="/base" />} />
         </Routes>
       </div>
     </div>

@@ -40,6 +40,7 @@ export default function Func() {
   };
   return (
     <div>
+      <h1>函数式基础写法</h1>
       <Head addTodo={addTodo} />
       <List todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
       <Bottom

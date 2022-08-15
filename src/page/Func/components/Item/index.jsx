@@ -7,6 +7,7 @@ export default function Item(props) {
     setMouse(flag);
   };
   const handleCheck = (id) => {
+    console.log(this)
     return (e) => {
        updateTodo(id, e.target.checked)
     }

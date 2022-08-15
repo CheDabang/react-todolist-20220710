@@ -50,6 +50,7 @@ export default class Base extends Component {
     const { todos } = this.state;
     return (
       <div className="App">
+        <h1>Class类基础写法</h1>
         <Head addTodo={this.addTodo} />
         <List
           todos={todos}
