@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Head from "./components/Head";
-import List from "./components/List";
-import Bottom from "./components/Bottom";
+import Head from "./components/Head.jsx";
+import List from "./components/List.jsx";
+import Bottom from "./components/Bottom.jsx";
 export default function Func() {
   const [todos, setTodos] = useState([
     { id: "001", name: "吃饭", done: false },

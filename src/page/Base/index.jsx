@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Head from "./components/Head";
-import List from "./components/List";
-import Bottom from "./components/Bottom";
+import Head from "./components/Head.jsx";
+import List from "./components/List.jsx";
+import Bottom from "./components/Bottom.jsx";
 export default class Base extends Component {
   state = {
     todos: [
