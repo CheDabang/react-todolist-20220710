@@ -39,9 +39,9 @@ export default function Func() {
     setTodos(newTodos);
   };
   return (
-    <div>
-      <h1 className="todos-title">Todos</h1>
-      <h2>函数式基础写法</h2>
+    <div className="content-wrap">
+      <h1 className="todos-title">todos</h1>
+      <h2 class="todos-about">函数式基础写法</h2>
       <Head addTodo={addTodo} />
       <List todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
       <Bottom

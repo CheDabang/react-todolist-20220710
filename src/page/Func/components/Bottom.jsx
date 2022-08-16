@@ -15,17 +15,20 @@ export default function Bottom(props) {
   };
   return (
     <div className="bottom">
-      <label>
-        <input
-          type="checkbox"
-          checked={doneCount === total && total !== 0}
-          onChange={handleCheckAll}
-        />
-        <span>已完成{doneCount}个</span>/<span>总数{total}个</span>
-      </label>
-      <button className="danger" onClick={handleClearCheck}>
-        清除已完成任务
-      </button>
+      <div className="center-box">
+        <label>
+          <input
+            className="toogle"
+            type="checkbox"
+            checked={doneCount === total && total !== 0}
+            onChange={handleCheckAll}
+          />
+          <span>已完成{doneCount}个</span>/<span>总数{total}个</span>
+        </label>
+        <button className="danger" onClick={handleClearCheck}>
+          清除已完成任务
+        </button>
+      </div>
     </div>
   );
 }

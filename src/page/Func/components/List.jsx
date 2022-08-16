@@ -4,7 +4,7 @@ import Item from "./Item.jsx";
 export default function List(props) {
   const { todos, updateTodo, deleteTodo } = props;
   return (
-    <div>
+    <div className="list">
       <ul>
         {todos.map((todo) => {
           return (
