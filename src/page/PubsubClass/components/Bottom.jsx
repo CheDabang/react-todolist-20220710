@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import PubSub from 'pubsub-js';
 export default class bottom extends Component {
   handleCheckAll = (e) => {
-    this.props.checkAllTodo(e.target.checked);
+    PubSub.publish('checkAllTodo', e.target.checked)
   };
   handleClearCheck = () => {
-    this.props.clearCheckTodo();
+    PubSub.publish('checkAllTodo', '')
   };
   render() {
     const { todos } = this.props;

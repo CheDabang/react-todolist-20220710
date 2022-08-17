@@ -33,27 +33,41 @@ export default class PubsubClass extends Component {
       const newTodos = [todo, ...todos];
       this.setState({ todos: newTodos });
     });
-    PubSub.subscribe('updateTodo', (_, data) => {
-      const {id, done} = data
-      const {todos} = this.state
-        const newTodos = todos.map((todo) => {
-          if(todo.id === id) {
-            return {...todo, done}
-          } else {
-            return todo
-          }
-        })
-        this.setState({ todos: newTodos });
-    })
-    PubSub.subscribe('deleteTodo', (_, id) => {
-        const {todos} = this.state
-        const newTodos = todos.filter((todo) => {
-          return todo.id !== id
-        })
-        this.setState({ todos: newTodos });
-    })
+    PubSub.subscribe("updateTodo", (_, data) => {
+      const { id, done } = data;
+      const { todos } = this.state;
+      const newTodos = todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, done };
+        } else {
+          return todo;
+        }
+      });
+      this.setState({ todos: newTodos });
+    });
+    PubSub.subscribe("deleteTodo", (_, id) => {
+      const { todos } = this.state;
+      const newTodos = todos.filter((todo) => {
+        return todo.id !== id;
+      });
+      this.setState({ todos: newTodos });
+    });
+    PubSub.subscribe("checkAllTodo", (_, done) => {
+      const { todos } = this.state;
+      const newTodos = todos.map((todo) => {
+        return { ...todo, done };
+      });
+      this.setState({ todos: newTodos });
+    });
+    PubSub.subscribe("clearCheckTodo", (_) => {
+      const { todos } = this.state;
+      const newTodos = todos.filter((todo) => {
+        return todo.done === false;
+      });
+      this.setState({ todos: newTodos });
+    });
   }
   componentWillUnmount() {
-    PubSub.clearAllSubscriptions()
+    PubSub.clearAllSubscriptions();
   }
 }
