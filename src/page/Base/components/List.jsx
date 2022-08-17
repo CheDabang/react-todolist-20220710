@@ -10,7 +10,7 @@ export default class List extends Component {
   render() {
     const { todos, updateTodo, deleteTodo } = this.props;
     return (
-      <div>
+      <div className="list">
         <ul>
           {todos.map((todo) => {
             return (

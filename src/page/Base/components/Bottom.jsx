@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 export default class bottom extends Component {
   handleCheckAll = (e) => {
     this.props.checkAllTodo(e.target.checked);
@@ -15,17 +15,22 @@ export default class bottom extends Component {
     );
     return (
       <div className="bottom">
-        <label>
-          <input
-            type="checkbox"
-            checked={doneCount === total && total !== 0}
-            onChange={this.handleCheckAll}
-          />
-          <span>已完成{doneCount}个</span>/<span>总数{total}个</span>
-        </label>
-        <button className="danger" onClick={this.handleClearCheck}>
-          清除已完成任务
-        </button>
+        <div className="center-box">
+          <label>
+            <input
+              className="toogle"
+              type="checkbox"
+              checked={doneCount === total && total !== 0}
+              onChange={this.handleCheckAll}
+            />
+            <div className="tip">
+              <span>已完成{doneCount}个</span> / <span>总数{total}个</span>
+            </div>
+          </label>
+          <button className="danger" onClick={this.handleClearCheck}>
+            清除已完成任务
+          </button>
+        </div>
       </div>
     );
   }

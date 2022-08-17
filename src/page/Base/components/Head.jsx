@@ -22,9 +22,10 @@ export default class head extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="head">
         <input
           type="text"
+          className="new-todo"
           placeholder="请输入新的代办事件，按回车键结束"
           onKeyUp={this.handleKeyUp}
         />

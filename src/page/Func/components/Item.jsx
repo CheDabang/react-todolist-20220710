@@ -12,6 +12,7 @@ export default function Item(props) {
     };
   };
   const handleDelete = (id) => {
+    if (!window.confirm("请确认删除代办事项！")) return;
     deleteTodo(id);
   };
   return (
@@ -21,7 +22,7 @@ export default function Item(props) {
       onMouseLeave={() => handleMouse(false)}
     >
       <input type="checkbox" className="toggle" checked={done} onChange={handleCheck(id)} />
-      <label className={done && 'done'}>
+      <label className={done ? 'done' : ''}>
         {name}
         {/* <input type="text"  /> */}
       </label>

@@ -49,7 +49,7 @@ export default class Base extends Component {
   render() {
     const { todos } = this.state;
     return (
-      <div className="App">
+      <div className="content-wrap">
         <h1 className="todos-title">todos</h1>
         <h2 className="todos-about">Class类基础写法</h2>
         <Head addTodo={this.addTodo} />
