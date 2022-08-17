@@ -49,7 +49,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
@@ -59,10 +59,13 @@ button {
   margin-right: 10px;
   color: #fff;
   cursor: pointer;
+  outline: none;
+  border-radius: 4px;
 }
 
 button.danger {
-  background: #f44336;
+  background-color: #f56c6c;
+  border-color: #f56c6c;
 }
 
 .app-container {
@@ -75,7 +78,7 @@ button.danger {
     padding: 20px;
     width: 270px;
     height: 100%;
-    background: rgba(255, 255, 255, .6);
+    background: rgba(255, 255, 255, 0.6);
 
     a {
       display: block;
@@ -100,7 +103,6 @@ button.danger {
     :focus {
       outline: 0;
     }
-
     box-sizing: border-box;
     width: calc(100% - 270px);
 
@@ -137,6 +139,7 @@ button.danger {
     }
 
     .todos-about {
+      margin-bottom: 20px;
       text-align: center;
       font-size: 24px;
       line-height: 40px;
@@ -158,8 +161,9 @@ button.danger {
           display: flex;
           align-items: center;
           width: 100%;
+          background: #fff;
         }
-        .toggle{
+        .toggle {
           margin-left: 10px;
           text-align: center;
           width: 40px;
@@ -174,30 +178,43 @@ button.danger {
           line-height: 1.2;
           transition: color 0.4s;
         }
-        .danger{
+        label.done{
+          color: #d9d9d9;
+          text-decoration: line-through;
+        }
+        .danger {
           position: absolute;
           top: 14px;
           right: 10px;
         }
       }
-      li:last-child{
+      li:last-child {
         border-bottom: none;
       }
     }
-    .bottom{
+    .bottom {
       display: flex;
       justify-content: center;
-      font-size: 24px;
-      .center-box{
+      .center-box {
         border-top: 1px solid #e6e6e6;
+        border-bottom: 1px solid #e6e6e6;
         width: 550px;
         background: #fff;
         display: flex;
         align-items: center;
-        label{
-          vertical-align: center;
+        justify-content: space-between;
+        label {
+          padding: 10px 0;
+          display: flex;
+          align-items: flex-end;
+          .tip {
+            font-size: 14px;
+            font-weight: 100;
+            padding-left: 10px;
+            line-height: 1.4;
+          }
         }
-        .toogle{
+        .toogle {
           margin-left: 10px;
           text-align: center;
           width: 40px;
@@ -205,8 +222,5 @@ button.danger {
         }
       }
     }
-
-
   }
-
 }

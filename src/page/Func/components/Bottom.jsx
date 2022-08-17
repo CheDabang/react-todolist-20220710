@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default function Bottom(props) {
   const { todos, checkAllTodo, clearCheckTodo } = props;
@@ -23,7 +23,9 @@ export default function Bottom(props) {
             checked={doneCount === total && total !== 0}
             onChange={handleCheckAll}
           />
-          <span>已完成{doneCount}个</span>/<span>总数{total}个</span>
+          <div className="tip">
+            <span>已完成{doneCount}个</span> / <span>总数{total}个</span>
+          </div>
         </label>
         <button className="danger" onClick={handleClearCheck}>
           清除已完成任务

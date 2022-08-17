@@ -7,7 +7,6 @@ export default function Item(props) {
     setMouse(flag);
   };
   const handleCheck = (id) => {
-    console.log(this);
     return (e) => {
       updateTodo(id, e.target.checked);
     };
@@ -20,10 +19,9 @@ export default function Item(props) {
       className="item-box"
       onMouseEnter={() => handleMouse(true)}
       onMouseLeave={() => handleMouse(false)}
-      style={{ backgroundColor: mouse ? "#ddd" : "#fff" }}
     >
       <input type="checkbox" className="toggle" checked={done} onChange={handleCheck(id)} />
-      <label>
+      <label className={done && 'done'}>
         {name}
         {/* <input type="text"  /> */}
       </label>
