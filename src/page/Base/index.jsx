@@ -5,9 +5,9 @@ import Bottom from "./components/Bottom.jsx";
 export default class Base extends Component {
   state = {
     todos: [
-      { id: "001", name: "吃饭", done: false },
-      { id: "002", name: "睡觉", done: true },
-      { id: "003", name: "打豆豆", done: false },
+      { id: "001", name: "基础通信(class版本)开发", done: true },
+      { id: "002", name: "基础通信(function版本)开发", done: false },
+      { id: "003", name: "PubSub消息订阅(class版)开发", done: false },
     ],
   };
 
@@ -51,7 +51,7 @@ export default class Base extends Component {
     return (
       <div className="content-wrap">
         <h1 className="todos-title">todos</h1>
-        <h2 className="todos-about">Class类基础写法</h2>
+        <h2 className="todos-about">基础通信(class版本)</h2>
         <Head addTodo={this.addTodo} />
         <List
           todos={todos}

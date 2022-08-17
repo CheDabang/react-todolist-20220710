@@ -16,13 +16,18 @@ export default function Item(props) {
     deleteTodo(id);
   };
   return (
-    <div
-      className="item-box"
-      onMouseEnter={() => handleMouse(true)}
-      onMouseLeave={() => handleMouse(false)}
-    >
-      <input type="checkbox" className="toggle" checked={done} onChange={handleCheck(id)} />
-      <label className={done ? 'done' : ''}>
+    <div className="item-box">
+      <input
+        type="checkbox"
+        className="toggle"
+        checked={done}
+        onChange={handleCheck(id)}
+      />
+      <label
+        className={done ? "done" : ""}
+        onMouseEnter={() => handleMouse(true)}
+        onMouseLeave={() => handleMouse(false)}
+      >
         {name}
         {/* <input type="text"  /> */}
       </label>

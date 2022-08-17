@@ -4,9 +4,9 @@ import List from "./components/List.jsx";
 import Bottom from "./components/Bottom.jsx";
 export default function Func() {
   const [todos, setTodos] = useState([
-    { id: "001", name: "吃饭", done: false },
-    { id: "002", name: "睡觉", done: true },
-    { id: "003", name: "打豆豆", done: false },
+    { id: "001", name: "基础通信(class版本)开发", done: false },
+    { id: "002", name: "基础通信(function版本)开发", done: true },
+    { id: "003", name: "PubSub消息订阅(class版)开发", done: false },
   ]);
   const addTodo = (todo) => {
     const newTodos = [todo, ...todos];
@@ -41,7 +41,7 @@ export default function Func() {
   return (
     <div className="content-wrap">
       <h1 className="todos-title">todos</h1>
-      <h2 className="todos-about">函数式基础写法</h2>
+      <h2 className="todos-about">基础通信(function版本)</h2>
       <Head addTodo={addTodo} />
       <List todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
       <Bottom

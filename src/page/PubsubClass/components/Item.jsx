@@ -20,20 +20,18 @@ export default class item extends Component {
     const { id, name, done } = this.props;
     const { mouse } = this.state;
     return (
-      <div className="item-box">
+      <div
+        className="item-box"
+        onMouseEnter={this.handleMouse(true)}
+        onMouseLeave={this.handleMouse(false)}
+      >
         <input
           type="checkbox"
           className="toggle"
           checked={done}
           onChange={this.handleCheck(id)}
         />
-        <label
-          className={done ? "done" : ""}
-          onMouseEnter={this.handleMouse(true)}
-          onMouseLeave={this.handleMouse(false)}
-        >
-          {name}
-        </label>
+        <label className={done ? "done" : ""}>{name}</label>
         <button
           style={{ display: mouse ? "block" : "none" }}
           className="danger"

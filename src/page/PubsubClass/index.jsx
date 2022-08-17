@@ -6,9 +6,9 @@ import PubSub from "pubsub-js";
 export default class PubsubClass extends Component {
   state = {
     todos: [
-      { id: "001", name: "吃饭", done: false },
-      { id: "002", name: "睡觉", done: true },
-      { id: "003", name: "打豆豆", done: false },
+      { id: "001", name: "基础通信(class版本)开发", done: false },
+      { id: "002", name: "基础通信(function版本)开发", done: false },
+      { id: "003", name: "PubSub消息订阅(class版)开发", done: true },
     ],
   };
   render() {
@@ -16,7 +16,7 @@ export default class PubsubClass extends Component {
     return (
       <div className="content-wrap">
         <h1 className="todos-title">todos</h1>
-        <h2 className="todos-about">PubSub class版消息订阅与发布</h2>
+        <h2 className="todos-about">PubSub消息订阅(class版)</h2>
         <Head />
         <List todos={todos} />
         <Bottom

@@ -8,9 +8,9 @@ export default function App() {
   return (
     <div className="app-container">
       <div className="nav">
-        <NavLink to="/base">class基础通信写法</NavLink>
-        <NavLink to="/func">function基础通信写法</NavLink>
-        <NavLink to="/pubsub">pubsub消息订阅通信写法</NavLink>
+        <NavLink to="/base">基础通信(class版本)</NavLink>
+        <NavLink to="/func">基础通信(function版本)</NavLink>
+        <NavLink to="/pubsub">PubSub消息订阅(class版本)</NavLink>
       </div>
       <div className="content">
         <Routes>
