@@ -134,7 +134,6 @@
   },
   "babel": {
     "presets": [
-      "react-app"
     ]
   },
   "devDependencies": {
