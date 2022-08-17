@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Item from "../Item";
+import Item from "./Item.jsx";
 
 export default class List extends Component {
   static propTypes = {

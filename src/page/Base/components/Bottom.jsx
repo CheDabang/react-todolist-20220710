@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./index.css";
 export default class bottom extends Component {
   handleCheckAll = (e) => {
     this.props.checkAllTodo(e.target.checked);

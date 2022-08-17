@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Head from "./components/Head";
-import List from "./components/List";
-import Bottom from "./components/Bottom";
+import Head from "./components/Head.jsx";
+import List from "./components/List.jsx";
+import Bottom from "./components/Bottom.jsx";
 export default class Base extends Component {
   state = {
     todos: [
@@ -50,7 +50,8 @@ export default class Base extends Component {
     const { todos } = this.state;
     return (
       <div className="App">
-        <h1>Class类基础写法</h1>
+        <h1 className="todos-title">todos</h1>
+        <h2 className="todos-about">Class类基础写法</h2>
         <Head addTodo={this.addTodo} />
         <List
           todos={todos}

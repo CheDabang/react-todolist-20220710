@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Item from "../Item";
+import Item from "./Item.jsx";
 export default function List(props) {
   const { todos, updateTodo, deleteTodo } = props;
   return (
-    <div>
+    <div className="list">
       <ul>
         {todos.map((todo) => {
           return (
