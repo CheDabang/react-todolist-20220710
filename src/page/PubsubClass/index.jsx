@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import Head from "./components/Head.jsx";
-import List from "./components/List.jsx";
-import Bottom from "./components/Bottom.jsx";
-import PubSub from "pubsub-js";
+import React, { Component } from 'react';
+import Head from './components/Head.jsx';
+import List from './components/List.jsx';
+import Bottom from './components/Bottom.jsx';
+import PubSub from 'pubsub-js';
 export default class PubsubClass extends Component {
   state = {
     todos: [
-      { id: "001", name: "基础通信(class版本)开发", done: false },
-      { id: "002", name: "基础通信(function版本)开发", done: false },
-      { id: "003", name: "PubSub消息订阅(class版)开发", done: true },
+      { id: '001', name: '基础通信(class版本)开发', done: false },
+      { id: '002', name: '基础通信(function版本)开发', done: false },
+      { id: '003', name: 'PubSub消息订阅(class版)开发', done: true },
     ],
   };
   render() {
@@ -28,12 +28,13 @@ export default class PubsubClass extends Component {
     );
   }
   componentDidMount() {
-    PubSub.subscribe("addTodo", (_, todo) => {
+    console.log('拿值')
+    PubSub.subscribe('addTodo', (_, todo) => {
       const { todos } = this.state;
       const newTodos = [todo, ...todos];
       this.setState({ todos: newTodos });
     });
-    PubSub.subscribe("updateTodo", (_, data) => {
+    PubSub.subscribe('updateTodo', (_, data) => {
       const { id, done } = data;
       const { todos } = this.state;
       const newTodos = todos.map((todo) => {
@@ -45,21 +46,21 @@ export default class PubsubClass extends Component {
       });
       this.setState({ todos: newTodos });
     });
-    PubSub.subscribe("deleteTodo", (_, id) => {
+    PubSub.subscribe('deleteTodo', (_, id) => {
       const { todos } = this.state;
       const newTodos = todos.filter((todo) => {
         return todo.id !== id;
       });
       this.setState({ todos: newTodos });
     });
-    PubSub.subscribe("checkAllTodo", (_, done) => {
+    PubSub.subscribe('checkAllTodo', (_, done) => {
       const { todos } = this.state;
       const newTodos = todos.map((todo) => {
         return { ...todo, done };
       });
       this.setState({ todos: newTodos });
     });
-    PubSub.subscribe("clearCheckTodo", (_) => {
+    PubSub.subscribe('clearCheckTodo', () => {
       const { todos } = this.state;
       const newTodos = todos.filter((todo) => {
         return todo.done === false;
