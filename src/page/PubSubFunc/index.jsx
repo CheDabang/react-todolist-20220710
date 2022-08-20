@@ -1,20 +1,59 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Head from './components/Head.jsx';
-import List from './components/List.jsx';
-import Bottom from './components/Bottom.jsx';
-import PubSub from 'pubsub-js';
-export default function Func() {
-  const [todos, setTodos] = useState([
-    { id: '001', name: '基础通信(class版本)开发', done: false },
-    { id: '002', name: '基础通信(function版本)开发', done: false },
-    { id: '003', name: 'PubSub消息订阅(class版)开发', done: false },
-    { id: '004', name: 'PubSub消息订阅(function版)开发', done: true },
-  ]);
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useEvent,
+} from "react";
+import Head from "./components/Head.jsx";
+import List from "./components/List.jsx";
+import Bottom from "./components/Bottom.jsx";
+import PubSub from "pubsub-js";
+// import { useCallback } from 'react';
+import { useSubscribe, useUnSubscribe } from "../../utils/usePubSub";
 
-  const addTodo = (_, todo) => {
-    const newTodos = [todo, ...todos];
-    setTodos(newTodos);
-  };
+export default function Func(prpos) {
+  const { path } = prpos;
+  const [todos, setTodos] = useState([
+    { id: "001", name: "基础通信(class版本)开发", done: false },
+    { id: "002", name: "基础通信(function版本)开发", done: false },
+    { id: "003", name: "PubSub消息订阅(class版)开发", done: false },
+    { id: "004", name: "PubSub消息订阅(function版)开发", done: true },
+  ]);
+  const refTodos = useRef(todos);
+  console.log("render", todos);
+  // const addTodo = (_, todo) => {
+  //   console.log(todos, refTodos)
+  //   const newTodos = [todo, ...todos];
+  //   refTodos.current = todos
+  //   setTodos([...newTodos]);
+  // };
+  // const addTodo = (_, todo) => {
+  //   const newTodos = [todo, ...todos];
+  //   setTodos(newTodos);
+  // }
+  /**
+   * useCallback + useRef 获取到最新的todos
+   */
+  // const addTodo = useCallback((_, todo) => {
+  //   const newTodos = [todo, ...refTodos.current];
+  //   setTodos(newTodos);
+  // }, [])
+
+  const addTodo = useCallback(
+    (_, todo) => {
+      const newTodos = [todo, ...todos];
+      setTodos(newTodos);
+    },
+    [todos]
+  );
+  // console.log(addTodoCall)
+
+  // const addTodo = useEvent((_, todo) => {
+  //   console.log(todos)
+  //   const newTodos = [todo, ...todos];
+  //   setTodos(newTodos);
+  // });
   const updateTodo = (_, data) => {
     const { id, done } = data;
     const newTodos = todos.map((todo) => {
@@ -42,39 +81,44 @@ export default function Func() {
     });
     setTodos(newTodos);
   };
-  // let subKey = 'subKey';
-  // const allSub = () => {
-  // PubSub.subscribe('addTodo', addTodo);
-  // PubSub.subscribe('updateTodo', updateTodo);
-  // PubSub.subscribe('deleteTodo', deleteTodo);
-  // PubSub.subscribe('checkAllTodo', checkAllTodo);
-  // PubSub.subscribe('clearCheckTodo', clearCheckTodo);
-  // };
-  let subAddTodo = '';
-  const mounted = useRef();
-  useEffect(() => {
-    if (!mounted.current) {
-      mounted.current = true;
-      PubSub.subscribe('addTodo', addTodo);
-      // allSub();
-      subAddTodo = PubSub.subscribe('addTodo', addTodo);
-      console.log('挂载');
-    }
-    // PubSub.subscribe('updateTodo', updateTodo);
-    // PubSub.subscribe('deleteTodo', deleteTodo);
-    // PubSub.subscribe('checkAllTodo', checkAllTodo);
-    // PubSub.subscribe('clearCheckTodo', clearCheckTodo);
 
-    return function cleanup() {
-      console.log('卸载了');
-      PubSub.unsubscribe(subAddTodo);
-      // PubSub.clearAllSubscriptions();
-    };
-  }, [subAddTodo]);
+  const unsubscribe = useUnSubscribe();
+  // console.log(subAddTodo);
+  useEffect(() => {
+    console.log(todos);
+    refTodos.current = todos;
+  });
+  useEffect(
+    () => {
+      console.log("订阅");
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      // const subAddTodo = useSubscribe("addTodo", function(msg, todo){
+      //   console.log(todos,)
+      //   const newTodos = [todo, ...todos];
+      //   setTodos([...newTodos]);
+      // });
+      const subAddTodo = PubSub.subscribe("addTodo", addTodo);
+      const subDelete = PubSub.subscribe("deleteTodo", deleteTodo);
+      const subUpdate = PubSub.subscribe("updateTodo", updateTodo);
+      const subCheckAll = PubSub.subscribe("checkAllTodo", checkAllTodo);
+      const subClearCheck = PubSub.subscribe("clearCheckTodo", clearCheckTodo);
+      return () => {
+        unsubscribe(
+          subAddTodo,
+          subDelete,
+          subUpdate,
+          subCheckAll,
+          subClearCheck
+        );
+      };
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [path]
+  );
   return (
     <div className="content-wrap">
       <h1 className="todos-title">todos</h1>
-      <h2 className="todos-about">基础通信(function版本)</h2>
+      <h2 className="todos-about">PubSub消息订阅(function版)</h2>
       <Head addTodo={addTodo} />
       <List todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
       <Bottom

@@ -16,7 +16,8 @@ export default function Head() {
     };
     // props.addTodo(todo);
     e.target.value = "";
-    PubSub.publish('addTodo', todo)
+    console.log('发送消息')
+    PubSub.publish("addTodo", todo);
   };
   return (
     <div className="head">
