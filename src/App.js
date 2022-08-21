@@ -4,6 +4,7 @@ import Base from "./page/Base";
 import Func from "./page/Func";
 import PubsubClass from "./page/PubsubClass";
 import PubsubFunc from "./page/PubSubFunc";
+import ReduxClass from "./page/ReduxClass"
 
 export default function App() {
   const [path, setPath] = useState("/PubsubFunc");
@@ -27,6 +28,9 @@ export default function App() {
         <NavLink to="/pubsubFunc" data-path="/PubsubFunc">
           PubSub消息订阅(function版本)
         </NavLink>
+        <NavLink to="/reduxClass" data-path="/reduxClass">
+          redux组件通信(class版本)
+        </NavLink>
       </div>
       <div className="content">
         <Routes>
@@ -34,6 +38,7 @@ export default function App() {
           <Route path="func" element={<Func />} />
           <Route path="pubsubClass" element={<PubsubClass />} />
           <Route path="pubsubFunc" element={<PubsubFunc path={path} />} />
+          <Route path="reduxClass" element={<ReduxClass path={path} />} />
           <Route path="*" element={<Navigate to={path} />} />
         </Routes>
       </div>

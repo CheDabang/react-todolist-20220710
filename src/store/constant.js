@@ -1,0 +1,5 @@
+export const ADDTODO = 'addTodo'
+export const UPDATETODO = 'updateTodo'
+export const DELETETODO = 'deleteTOdo'
+export const CHECKALLTODO = 'checkAllTodo'
+export const CLEARCHECKTODO = 'clearCheckTodo'
