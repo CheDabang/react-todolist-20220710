@@ -16,7 +16,6 @@ export default function Head() {
     };
     // props.addTodo(todo);
     e.target.value = "";
-    console.log('发送消息')
     PubSub.publish("addTodo", todo);
   };
   return (
