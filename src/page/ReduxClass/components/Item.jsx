@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import PubSub from "pubsub-js";
+import store from "../../../store";
+import { updateTodo, deleteTodo} from "../../../store/todoAction";
 export default class item extends Component {
   state = { mouse: false };
   handleMouse = (flag) => {
@@ -9,12 +10,13 @@ export default class item extends Component {
   };
   handleCheck = (id) => {
     return (e) => {
-      PubSub.publish("updateTodo", { id, done: e.target.checked });
+      const done = e.target.checked
+      store.dispatch(updateTodo({id, done}))
     };
   };
   handleDelete = (id) => {
     if (!window.confirm("请确认删除代办事项！")) return;
-    PubSub.publish("deleteTodo", id);
+    store.dispatch(deleteTodo({id}))
   };
   render() {
     const { id, name, done } = this.props;

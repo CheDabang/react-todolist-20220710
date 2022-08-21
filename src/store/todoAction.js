@@ -3,10 +3,10 @@ import {
   UPDATETODO,
   DELETETODO,
   CHECKALLTODO,
-  CLEARTCHECKTODO,
+  CLEARCHECKTODO,
 } from "./constant";
 export const addTodo = (data) => ({ type: ADDTODO, data });
 export const updateTodo = (data) => ({ type: UPDATETODO, data });
 export const deleteTodo = (data) => ({ type: DELETETODO, data });
 export const checkAllTodo = (data) => ({ type: CHECKALLTODO, data });
-export const clearCheckTodo = (data) => ({ type: CLEARTCHECKTODO, data });
+export const clearCheckTodo = (data) => ({ type: CLEARCHECKTODO, });

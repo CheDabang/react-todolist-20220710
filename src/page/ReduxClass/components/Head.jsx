@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { nanoid } from "nanoid";
 import store from "../../../store";
-import { ADDTODO } from "../../../store/constant";
+import { addTodo } from "../../../store/todoAction";
 export default class head extends Component {
   handleKeyUp = (e) => {
     if (e.keyCode !== 13) return;
@@ -16,7 +16,7 @@ export default class head extends Component {
     };
     e.target.value = "";
     // store.dispatch({ type: "addTodo", data: todo });
-    store.dispatch(ADDTODO({ todo }));
+    store.dispatch(addTodo(todo));
   };
   render() {
     return (

@@ -8,30 +8,39 @@ import {
 const todos = [{ id: "001", name: "redux组件通信(class版本)", done: true }];
 function todosReducer(preState = todos, action) {
   const { type, data } = action;
-  let newTodos = []
+  console.log(data)
+  const { id, done } = data ? data : {};
+  let newTodos = [];
   switch (type) {
     case ADDTODO:
       newTodos = [data, ...preState];
-      return newTodos
+      return newTodos;
     case UPDATETODO:
-      const {id, done} = data
-      newTodos = preState.map((todo)=> {
+      newTodos = preState.map((todo) => {
         if (todo.id === id) {
           return { ...todo, done };
         } else {
           return todo;
         }
-      })
-      return newTodos
+      });
+      return newTodos;
     case DELETETODO:
-      return 'Delete'
-      // newTodos = [data]
+      newTodos = preState.filter((todo) => {
+        return todo.id !== id;
+      });
+      return newTodos;
     case CHECKALLTODO:
-      return 'check'
+      newTodos = preState.map((todo) => {
+        return {...todo, done}
+      })
+      return newTodos;
     case CLEARCHECKTODO:
-      return 'clear'
+      newTodos = preState.filter(todo => {
+        return todo.done !== true
+      })
+      return newTodos;
     default:
-      return preState
+      return preState;
   }
 }
 

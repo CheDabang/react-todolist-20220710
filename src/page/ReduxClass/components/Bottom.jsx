@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import PubSub from 'pubsub-js';
+import store from '../../../store';
+import { checkAllTodo, clearCheckTodo } from '../../../store/todoAction';
 export default class bottom extends Component {
   handleCheckAll = (e) => {
-    PubSub.publish('checkAllTodo', e.target.checked)
+    // PubSub.publish('checkAllTodo', e.target.checked)
+    const done = e.target.checked
+    store.dispatch(checkAllTodo({done}))
   };
   handleClearCheck = () => {
-    PubSub.publish('checkAllTodo', '')
+    store.dispatch(clearCheckTodo())
+    // PubSub.publish('checkAllTodo', '')
   };
   render() {
     const { todos } = this.props;
