@@ -1,0 +1,38 @@
+import React from 'react';
+import store from '../../../store';
+import { checkAllTodo, clearCheckTodo } from '../../../store/todoAction';
+export default function Bottom(props) {
+  const { todos} = props;
+  const total = todos.length;
+  const doneCount = todos.reduce(
+    (pre, current) => pre + (current.done ? 1 : 0),
+    0
+  );
+  const handleCheckAll = (e) => {
+    const done = e.target.checked;
+    store.dispatch(checkAllTodo({done}))
+  };
+  const handleClearCheck = () => {
+    store.dispatch(clearCheckTodo())
+  };
+  return (
+    <div className="bottom">
+      <div className="center-box">
+        <label>
+          <input
+            className="toogle"
+            type="checkbox"
+            checked={doneCount === total && total !== 0}
+            onChange={handleCheckAll}
+          />
+          <div className="tip">
+            <span>已完成{doneCount}个</span> / <span>总数{total}个</span>
+          </div>
+        </label>
+        <button className="danger" onClick={handleClearCheck}>
+          清除已完成任务
+        </button>
+      </div>
+    </div>
+  );
+}

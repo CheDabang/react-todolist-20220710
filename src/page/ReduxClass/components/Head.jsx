@@ -15,7 +15,6 @@ export default class head extends Component {
       done: false,
     };
     e.target.value = "";
-    // store.dispatch({ type: "addTodo", data: todo });
     store.dispatch(addTodo(todo));
   };
   render() {

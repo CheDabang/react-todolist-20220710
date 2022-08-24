@@ -3,15 +3,7 @@ import Head from "./components/Head.jsx";
 import List from "./components/List.jsx";
 import Bottom from "./components/Bottom.jsx";
 import store from '../../store'
-console.log(store)
-export default class PubsubClass extends Component {
-  state = {
-    todos: [
-      { id: "001", name: "redux组件通信(class版本)", done: true },
-    ],
-    test: 0,
-  };
-  
+export default class PubsubClass extends Component {  
   render() {
     // const { todos } = this.state;
     console.log(store.getState())

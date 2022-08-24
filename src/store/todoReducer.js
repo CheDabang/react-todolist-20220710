@@ -5,10 +5,12 @@ import {
   CHECKALLTODO,
   CLEARCHECKTODO,
 } from "./constant";
-const todos = [{ id: "001", name: "redux组件通信(class版本)", done: true }];
+const todos = [
+  { id: "001", name: "redux组件通信(class版本)", done: true },
+  { id: "002", name: "redux组件通信(func版本)", done: true },
+];
 function todosReducer(preState = todos, action) {
   const { type, data } = action;
-  console.log(data)
   const { id, done } = data ? data : {};
   let newTodos = [];
   switch (type) {
@@ -31,13 +33,13 @@ function todosReducer(preState = todos, action) {
       return newTodos;
     case CHECKALLTODO:
       newTodos = preState.map((todo) => {
-        return {...todo, done}
-      })
+        return { ...todo, done };
+      });
       return newTodos;
     case CLEARCHECKTODO:
-      newTodos = preState.filter(todo => {
-        return todo.done !== true
-      })
+      newTodos = preState.filter((todo) => {
+        return todo.done !== true;
+      });
       return newTodos;
     default:
       return preState;
